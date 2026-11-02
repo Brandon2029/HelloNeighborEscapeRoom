@@ -1,0 +1,27 @@
+Living Room
+You have entered the neighbor's living room. Old family pictures cover the walls, and a music box sits near a heavy couch. The house is strangely quiet, except for the ticking of a clock above the fireplace. A small key has been left where someone might notice it, but you cannot tell what it opens. The curtains are drawn even though it is still light outside.
+A doorway leads east to the Kitchen, west to the Garage, and stairs lead up to Bedroom 1.
+#
+Kitchen
+The kitchen smells like old food. Plates and boxes cover the counters, and a flashlight lies among the clutter. A strange orb and a knife are also here, making you wonder what the neighbor has been doing. The refrigerator hums loudly, and muddy footprints lead toward the basement stairs. You notice that several cabinet doors have been left open.
+The Living Room is west, and a stairway leads down to the Basement.
+#
+Garage
+The neighbor's car is parked beside shelves of tools and workout equipment. A heavy toolbox is tucked into a corner. Dust covers most of the floor, but there are fresh tracks near the car. A flickering light makes it difficult to see the far wall. You hear a faint noise from somewhere inside the house.
+The only clear way back is east to the Living Room.
+#
+Basement
+The basement is dark and dusty, with storage crates stacked against the walls. Every creak makes you wonder if the neighbor is nearby. Pipes run across the ceiling, and a weak light barely reaches the corners. Some of the crates have strange markings, while others look as if they have not been touched in years. You feel uneasy staying down here for too long.
+Stairs lead up to the Kitchen.
+#
+Bedroom 1
+Colorful posters cover the walls of this bedroom. A heavy bed blocks part of the floor, and you can hear the house settling around you. A desk sits beside the window with scattered papers and an old lamp. The room looks normal at first, but the locked drawers make you curious about what the neighbor might be hiding.
+Go east to Bedroom 2 or down to the Living Room.
+#
+Bedroom 2
+A puzzle rests at the end of the bed, and a handwritten note is lying nearby. Clothes are scattered across the floor, and the closet door is slightly open. A narrow beam of light shines through a crack in the ceiling. The note might be an important clue, but you will have to collect it to keep it with you.
+There is an opening up to the Attic and a doorway west to Bedroom 1.
+#
+Attic
+Cobwebs stretch between dusty boxes in the attic. An old chest sits under the sloped roof, and a crowbar is nearby. The wooden floor creaks with every step, and a small window looks out over the neighborhood. Old photographs and broken furniture suggest that the neighbor has been storing things here for a long time. You wonder whether the crowbar will be useful later.
+You can go down to Bedroom 2.
