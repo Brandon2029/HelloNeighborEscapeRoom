@@ -19,7 +19,7 @@ public class World {
 
 		// Connect the rooms.
 		livingRoom.addExit(kitchen, 0);
-		kitchen.addExit(livingRoom, 1);
+		kitchen.addExit(livingRoom, 1);   
 
 		livingRoom.addExit(garage, 1);
 		garage.addExit(livingRoom, 0);
