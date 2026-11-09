@@ -6,6 +6,8 @@ import javax.swing.*;
 
 public class GameGUI extends JFrame {
 
+	private static final long serialVersionUID = 1L;
+
 	private final JTextArea output = new JTextArea();
 	private final JTextField commandInput = new JTextField();
 	private final JButton submit = new JButton("Enter");
@@ -20,7 +22,7 @@ public class GameGUI extends JFrame {
 
 		getContentPane().setBackground(new Color(25, 30, 40));
 
-		JLabel heading = new JLabel("HELLO NEIGHBOR  |  ESCAPE ROOM", SwingConstants.CENTER);
+		JLabel heading = new JLabel("HELLO NEIGHBOR | ESCAPE ROOM", SwingConstants.CENTER);
 
 		heading.setFont(new Font("SansSerif", Font.BOLD, 23));
 

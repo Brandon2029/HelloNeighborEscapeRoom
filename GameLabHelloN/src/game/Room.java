@@ -67,9 +67,8 @@ public class Room implements Serializable {
 	}
 
 	public String getItemsDescription() {
-		if (items.isEmpty()) {
+		if (items.isEmpty())
 			return "There are no items here.";
-		}
 
 		ArrayList<String> names = new ArrayList<>(items.keySet());
 

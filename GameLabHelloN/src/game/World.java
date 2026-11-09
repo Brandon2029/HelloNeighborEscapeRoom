@@ -18,10 +18,6 @@ public class World {
 		Room attic = new Room("Attic");
 
 		// Connect the rooms.
-		// east = 0, west = 1
-		// north = 2, south = 3
-		// up = 4, down = 5
-
 		livingRoom.addExit(kitchen, 0);
 		kitchen.addExit(livingRoom, 1);
 
@@ -40,37 +36,37 @@ public class World {
 		kitchen.addExit(basement, 5);
 		basement.addExit(kitchen, 4);
 
-		// Lab 11: Lock three rooms.
+		// Lab 11: Locked rooms.
 		garage.setLocked(true);
 		attic.setLocked(true);
 		basement.setLocked(true);
 
-		// Living Room items.
+		// Living Room.
 		livingRoom.addItem(new Key());
-		livingRoom.addItem(new Item("musicbox"));
+		livingRoom.addItem(new MusicBox());
 		livingRoom.addItem(new Item("couch", true));
 
-		// Kitchen items.
+		// Kitchen.
 		kitchen.addItem(new Item("flashlight"));
 		kitchen.addItem(new Item("knife"));
-		kitchen.addItem(new Item("orb"));
+		kitchen.addItem(new Orb());
 		kitchen.addItem(new BasementKey());
 
-		// Bedroom 1 items.
+		// Bedroom 1.
 		bedroom1.addItem(new Crowbar());
 		bedroom1.addItem(new Item("bed", true));
 
-		// Bedroom 2 items.
-		bedroom2.addItem(new Item("note"));
+		// Bedroom 2.
+		bedroom2.addItem(new Note());
 
-		// Garage item.
+		// Garage.
 		garage.addItem(new Item("toolbox", true));
 
-		// Basement item.
+		// Basement.
 		basement.addItem(new Item("crate", true));
 
-		// Attic item.
-		attic.addItem(new Item("chest", true));
+		// Attic.
+		attic.addItem(new Chest());
 
 		return livingRoom;
 	}

@@ -5,19 +5,19 @@ public class BasementKey extends Item {
 	private static final long serialVersionUID = 1L;
 
 	public BasementKey() {
-		super("key");
+		super("basementkey");
 	}
 
 	@Override
 	public void use() {
-		Room current = Game.getCurrentRoom();
+		Room room = Game.getCurrentRoom();
 
-		if (!current.getName().equals("Kitchen")) {
+		if (!room.getName().equals("Kitchen")) {
 			Game.print("You don't see a basement lock here.");
 			return;
 		}
 
-		Room basement = current.getExit(5);
+		Room basement = room.getExit(5);
 
 		if (!basement.isLocked()) {
 			Game.print("The basement is already unlocked.");
