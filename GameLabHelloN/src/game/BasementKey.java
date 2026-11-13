@@ -23,7 +23,7 @@ public class BasementKey extends Item {
 			Game.print("The basement is already unlocked.");
 		} else {
 			basement.setLocked(false);
-			Game.print("The basement key turns. " + "The basement door is now unlocked!");
+			Game.print("The basement door is now unlocked!");
 		}
 	}
 }

@@ -13,17 +13,17 @@ public class Crowbar extends Item {
 		Room room = Game.getCurrentRoom();
 
 		if (!room.getName().equals("Bedroom 2")) {
-			Game.print("There is no attic hatch " + "to open here.");
+			Game.print("There is no attic hatch here.");
 			return;
 		}
 
 		Room attic = room.getExit(4);
 
 		if (!attic.isLocked()) {
-			Game.print("The attic hatch is already open.");
+			Game.print("The attic is already unlocked.");
 		} else {
 			attic.setLocked(false);
-			Game.print("You pry open the attic hatch " + "with the crowbar. The attic is unlocked!");
+			Game.print("You pry open the attic hatch!");
 		}
 	}
 }

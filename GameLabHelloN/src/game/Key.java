@@ -13,7 +13,7 @@ public class Key extends Item {
 		Room room = Game.getCurrentRoom();
 
 		if (!room.getName().equals("Living Room")) {
-			Game.print("You don't see a garage lock " + "you can reach from here.");
+			Game.print("You don't see a garage lock here.");
 			return;
 		}
 
@@ -23,7 +23,7 @@ public class Key extends Item {
 			Game.print("The garage is already unlocked.");
 		} else {
 			garage.setLocked(false);
-			Game.print("You turn the key in the garage " + "door. It clicks open!");
+			Game.print("You unlock the garage door!");
 		}
 	}
 }

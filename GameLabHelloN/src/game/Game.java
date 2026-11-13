@@ -18,10 +18,11 @@ public class Game {
 	}
 
 	public static void print(Object value) {
-		if (gui != null)
+		if (gui != null) {
 			gui.appendOutput(String.valueOf(value));
-		else
+		} else {
 			System.out.println(value);
+		}
 	}
 
 	public static void loadDescriptions() {
@@ -32,19 +33,22 @@ public class Game {
 			while (file.hasNextLine()) {
 				String name = file.nextLine().trim();
 
-				if (name.isEmpty())
+				if (name.isEmpty()) {
 					continue;
+				}
 
 				StringBuilder description = new StringBuilder();
 
 				while (file.hasNextLine()) {
 					String line = file.nextLine();
 
-					if (line.trim().equals("#"))
+					if (line.trim().equals("#")) {
 						break;
+					}
 
-					if (description.length() > 0)
+					if (description.length() > 0) {
 						description.append("\n");
+					}
 
 					description.append(line);
 				}
@@ -53,7 +57,7 @@ public class Game {
 			}
 
 		} catch (FileNotFoundException e) {
-			print("Could not find roomDescriptions.txt. " + "Put it in the main project folder.");
+			print("Could not find roomDescriptions.txt.");
 		}
 	}
 
@@ -63,8 +67,8 @@ public class Game {
 		inventory.clear();
 
 		print("HELLO NEIGHBOR: ESCAPE ROOM");
-		print("Explore the neighbor's house and unlock its hidden rooms.");
-		print("Type help to see commands.");
+		print("Explore the neighbor's mysterious house.");
+		print("Type help to see the commands.");
 		print("\n" + currentRoom);
 	}
 
@@ -117,8 +121,12 @@ public class Game {
 		} else {
 			inventory.add(item);
 			currentRoom.removeItem(name);
-			print("You take the " + name + " and carry it with you!");
+			print("You take the " + name + ".");
 		}
+	}
+
+	public static void addInventoryItem(Item item) {
+		inventory.add(item);
 	}
 
 	public static void printInventory() {
@@ -133,61 +141,68 @@ public class Game {
 		}
 	}
 
-	public static void useItem(String name) {
-		Item item = findInventoryItem(name);
-
-		if (item == null)
-			print("You don't have the " + name + " in your inventory.");
-		else
-			item.use();
-	}
-
 	private static Item findInventoryItem(String name) {
 		for (Item item : inventory) {
-			if (item.getName().equalsIgnoreCase(name))
+			if (item.getName().equalsIgnoreCase(name)) {
 				return item;
+			}
 		}
 
 		return null;
 	}
 
-	// Lab 12: Open an item in the current room.
+	public static void useItem(String name) {
+		Item item = findInventoryItem(name);
+
+		if (item == null) {
+			print("You don't have the " + name + ".");
+		} else {
+			item.use();
+		}
+	}
+
 	public static void openItem(String name) {
 		Item item = currentRoom.getItem(name);
 
 		if (item == null) {
 			print("There is no " + name + " here to open.");
-			return;
+		} else {
+			item.open();
 		}
-
-		item.open();
 	}
 
-	// Lab 12: Close an item in the current room.
 	public static void closeItem(String name) {
 		Item item = currentRoom.getItem(name);
 
 		if (item == null) {
 			print("There is no " + name + " here to close.");
-			return;
+		} else {
+			item.close();
 		}
-
-		item.close();
 	}
 
-	// Lab 12: Read an item in the inventory.
 	public static void readItem(String name) {
 		Item item = findInventoryItem(name);
 
 		if (item == null) {
 			print("You must carry the " + name + " before you can read it.");
-			return;
+		} else {
+			item.read();
 		}
-
-		item.read();
 	}
 
-	// Lab 10: Save game progress.
+	// Lab 13: Talk to an NPC.
+	public static void talkToNPC(String name) {
+		NPC npc = currentRoom.getNPC(name);
+
+		if (npc == null) {
+			print("There is no " + name + " here to talk to.");
+		} else {
+			npc.talk();
+		}
+	}
+
+	// Lab 10: Save progress.
 	public static void saveGame() {
 		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(SAVE_FILE))) {
 
@@ -202,29 +217,27 @@ public class Game {
 		}
 	}
 
-	// Lab 10: Load game progress.
+	// Lab 10: Load progress.
 	@SuppressWarnings("unchecked")
 	public static void loadGame() {
-		File save = new File(SAVE_FILE);
+		File file = new File(SAVE_FILE);
 
-		if (!save.exists()) {
+		if (!file.exists()) {
 			print("No saved game was found.");
 			return;
 		}
 
-		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(save))) {
+		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
 
-			Room loadedRoom = (Room) in.readObject();
+			Room savedRoom = (Room) in.readObject();
+			ArrayList<Item> savedInventory = (ArrayList<Item>) in.readObject();
+			ArrayList<Room> savedRooms = (ArrayList<Room>) in.readObject();
 
-			ArrayList<Item> loadedInventory = (ArrayList<Item>) in.readObject();
-
-			ArrayList<Room> loadedRooms = (ArrayList<Room>) in.readObject();
-
-			currentRoom = loadedRoom;
-			inventory = loadedInventory;
+			currentRoom = savedRoom;
+			inventory = savedInventory;
 
 			World.rooms.clear();
-			World.rooms.addAll(loadedRooms);
+			World.rooms.addAll(savedRooms);
 
 			print("Game loaded successfully!");
 			print("\n" + currentRoom);
@@ -235,7 +248,6 @@ public class Game {
 		}
 	}
 
-	// Lab 9: GUI command handler.
 	public static void runGameGUI(String command) {
 		processCommand(command);
 	}
@@ -248,14 +260,15 @@ public class Game {
 
 		command = command.toLowerCase().trim().replaceAll("\\b(the|to)\\b", "").trim().replaceAll("\\s+", " ");
 
-		if (command.isEmpty())
+		if (command.isEmpty()) {
 			return true;
+		}
 
 		String[] words = command.split(" ");
 		String action = words[0];
+		String target = words.length > 1 ? String.join(" ", Arrays.copyOfRange(words, 1, words.length)) : "";
 
 		switch (action) {
-
 		case "east":
 		case "west":
 		case "north":
@@ -266,45 +279,59 @@ public class Game {
 			break;
 
 		case "go":
-			if (words.length < 2)
+			if (target.isEmpty()) {
 				print("Go where?");
-			else
-				move(words[1]);
+			} else {
+				move(target);
+			}
 			break;
 
 		case "take":
-			if (words.length < 2)
+			if (target.isEmpty()) {
 				print("Take what?");
-			else
-				takeItem(words[1]);
+			} else {
+				takeItem(target);
+			}
 			break;
 
 		case "use":
-			if (words.length < 2)
+			if (target.isEmpty()) {
 				print("Use what?");
-			else
-				useItem(words[1]);
+			} else {
+				useItem(target);
+			}
 			break;
 
 		case "open":
-			if (words.length < 2)
+			if (target.isEmpty()) {
 				print("Open what?");
-			else
-				openItem(words[1]);
+			} else {
+				openItem(target);
+			}
 			break;
 
 		case "close":
-			if (words.length < 2)
+			if (target.isEmpty()) {
 				print("Close what?");
-			else
-				closeItem(words[1]);
+			} else {
+				closeItem(target);
+			}
 			break;
 
 		case "read":
-			if (words.length < 2)
+			if (target.isEmpty()) {
 				print("Read what?");
-			else
-				readItem(words[1]);
+			} else {
+				readItem(target);
+			}
+			break;
+
+		case "talk":
+			if (target.isEmpty()) {
+				print("Talk to who?");
+			} else {
+				talkToNPC(target);
+			}
 			break;
 
 		case "i":
@@ -325,8 +352,15 @@ public class Game {
 			break;
 
 		case "help":
-			print("Commands: go <direction>, " + "take <item>, use <item>, " + "open <item>, close <item>, "
-					+ "read <item>, i, look, " + "save, load, exit");
+			print("Commands:");
+			print("go <direction>");
+			print("take <item>");
+			print("use <item>");
+			print("open <item>");
+			print("close <item>");
+			print("read <item>");
+			print("talk <character>");
+			print("i, look, save, load, help, exit");
 			break;
 
 		case "exit":
@@ -340,7 +374,6 @@ public class Game {
 		return true;
 	}
 
-	// Original console game.
 	public static void runGame() {
 		startGame();
 
@@ -348,18 +381,19 @@ public class Game {
 			while (input.hasNextLine()) {
 				print("Enter a command:");
 
-				if (!processCommand(input.nextLine()))
+				if (!processCommand(input.nextLine())) {
 					break;
+				}
 			}
 		}
 	}
 
-	// Launch the GUI.
 	public static void launchGUI() {
 		SwingUtilities.invokeLater(() -> {
 			gui = new GameGUI(command -> {
-				if (!processCommand(command))
+				if (!processCommand(command)) {
 					gui.setCommandEnabled(false);
+				}
 			});
 
 			gui.setVisible(true);

@@ -10,6 +10,7 @@ public class Room implements Serializable {
 	private String name;
 	private Room[] exits = new Room[6];
 	private HashMap<String, Item> items = new HashMap<>();
+	private HashMap<String, NPC> npcs = new HashMap<>();
 	private boolean locked = false;
 
 	public Room(String name) {
@@ -66,9 +67,20 @@ public class Room implements Serializable {
 		return items.remove(name.toLowerCase());
 	}
 
+	// Lab 13: Add NPC to room.
+	public void addNPC(NPC npc) {
+		npcs.put(npc.getName().toLowerCase(), npc);
+	}
+
+	// Lab 13: Find NPC in room.
+	public NPC getNPC(String name) {
+		return npcs.get(name.toLowerCase());
+	}
+
 	public String getItemsDescription() {
-		if (items.isEmpty())
+		if (items.isEmpty()) {
 			return "There are no items here.";
+		}
 
 		ArrayList<String> names = new ArrayList<>(items.keySet());
 
@@ -77,8 +89,20 @@ public class Room implements Serializable {
 		return "You can see: " + String.join(", ", names);
 	}
 
+	public String getNPCDescription() {
+		if (npcs.isEmpty()) {
+			return "";
+		}
+
+		ArrayList<String> names = new ArrayList<>(npcs.keySet());
+
+		Collections.sort(names);
+
+		return "\nCharacters here: " + String.join(", ", names);
+	}
+
 	@Override
 	public String toString() {
-		return name + "\n" + getDescription() + "\n" + getItemsDescription();
+		return name + "\n" + getDescription() + "\n" + getItemsDescription() + getNPCDescription();
 	}
 }

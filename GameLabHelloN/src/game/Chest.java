@@ -24,7 +24,6 @@ public class Chest extends Item {
 		if (!diaryFound) {
 			Game.getCurrentRoom().addItem(new Diary());
 			diaryFound = true;
-
 			Game.print("Inside is an old diary. " + "You can take diary.");
 		} else {
 			Game.print("The chest is empty now.");

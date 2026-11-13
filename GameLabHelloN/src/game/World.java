@@ -17,9 +17,12 @@ public class World {
 		Room bedroom2 = new Room("Bedroom 2");
 		Room attic = new Room("Attic");
 
-		// Connect the rooms.
+		// Directions:
+		// east=0, west=1, north=2
+		// south=3, up=4, down=5
+
 		livingRoom.addExit(kitchen, 0);
-		kitchen.addExit(livingRoom, 1);   
+		kitchen.addExit(livingRoom, 1);
 
 		livingRoom.addExit(garage, 1);
 		garage.addExit(livingRoom, 0);
@@ -67,6 +70,9 @@ public class World {
 
 		// Attic.
 		attic.addItem(new Chest());
+
+		// Lab 13: Place the neighbor.
+		garage.addNPC(new Neighbor());
 
 		return livingRoom;
 	}

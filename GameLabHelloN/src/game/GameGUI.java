@@ -25,41 +25,30 @@ public class GameGUI extends JFrame {
 		JLabel heading = new JLabel("HELLO NEIGHBOR | ESCAPE ROOM", SwingConstants.CENTER);
 
 		heading.setFont(new Font("SansSerif", Font.BOLD, 23));
-
 		heading.setForeground(new Color(238, 203, 115));
-
 		heading.setBorder(BorderFactory.createEmptyBorder(16, 8, 8, 8));
-
 		add(heading, BorderLayout.NORTH);
 
 		output.setEditable(false);
 		output.setLineWrap(true);
 		output.setWrapStyleWord(true);
-
 		output.setFont(new Font("Monospaced", Font.PLAIN, 15));
-
 		output.setBackground(new Color(19, 24, 32));
 		output.setForeground(new Color(225, 235, 240));
 		output.setMargin(new Insets(14, 14, 14, 14));
 
 		JScrollPane scroll = new JScrollPane(output);
-
 		scroll.setBorder(BorderFactory.createEmptyBorder(4, 14, 4, 14));
-
 		add(scroll, BorderLayout.CENTER);
 
 		JPanel controls = new JPanel(new BorderLayout(8, 8));
-
 		controls.setBorder(BorderFactory.createEmptyBorder(6, 14, 14, 14));
-
 		controls.setBackground(new Color(25, 30, 40));
 
 		commandInput.setFont(new Font("SansSerif", Font.PLAIN, 16));
-
 		controls.add(commandInput, BorderLayout.CENTER);
 
 		submit.setFont(new Font("SansSerif", Font.BOLD, 15));
-
 		controls.add(submit, BorderLayout.EAST);
 		add(controls, BorderLayout.SOUTH);
 
