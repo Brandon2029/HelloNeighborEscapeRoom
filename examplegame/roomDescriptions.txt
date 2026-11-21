@@ -1,0 +1,32 @@
+Living Room
+A comfortable but cluttered living room has a couch, a coffee table, and two armchairs. Family photos share the walls with a pair of unusual paintings. A dusty rug covers most of the floor, and a music box rests on a nearby shelf.
+
+The office is to the west, the bedroom to the north, and the kitchen to the east.
+#
+Bedroom
+Your bedroom contains a small bed, a nightstand, posters, and a pile of laundry. An office key is tucked among your belongings, and you notice $20 sitting on the nightstand.
+
+An attic hatch is overhead. You can climb up to the attic once it is unlocked or go south to the living room.
+#
+Office
+Your father's office smells faintly of paper and old books. A computer sits on a desk beside stacks of folders. The blinds are half closed, leaving the room dim even during the day.
+
+The living room is east. A passage south leads toward the garage.
+#
+Kitchen
+The kitchen has a crowded counter, a humming refrigerator, and a table covered with yesterday's mail. A flashlight, a knife, and a mysterious orb are here.
+
+Your brother Fred is standing near the refrigerator, looking for something to eat. He seems to know more about the house than he is willing to admit.
+
+You can head west to the living room or south to the garage.
+#
+Attic
+The attic is cramped and quiet. Boxes line the walls beneath sloping rafters, and a small safe is hidden behind a pile of old blankets. Dust floats through a narrow beam of sunlight.
+
+The only way out is down to the bedroom.
+#
+Garage
+The garage contains your father's car, shelves of supplies, and scattered tools. The air smells of rubber and motor oil. You have reached the place that holds the goal of your adventure.
+
+You can go north to the kitchen or up toward the office.
+#
